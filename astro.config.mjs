@@ -12,6 +12,8 @@ import compress from 'astro-compress';
 
 import astrowind from './vendor/integration';
 
+import vercel from '@astrojs/vercel/serverless';
+
 import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
@@ -26,6 +28,9 @@ const whenExternalScripts = (items = []) =>
 
 export default defineConfig({
   output: 'static',
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
 
   integrations: [
     tailwind({
